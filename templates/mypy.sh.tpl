@@ -30,7 +30,7 @@ main() {
   output=$($mypy {VERBOSE_OPT} --bazel {PACKAGE_ROOTS} --config-file {MYPY_INI_PATH} --cache-map {CACHE_MAP_TRIPLES} {FOLLOW_IMPORTS} -- {SRCS} 2>&1)
   status=$?
   set -o errexit
-
+  
   if [ ! -z "$report_file" ]; then
     echo "${output}" > "${report_file}"
   fi
