@@ -185,11 +185,12 @@ def _mypy_rule_impl(ctx, is_aspect = False):
 
     follow_imports = ""
     if include_imports:
+        pass
         # --follow-imports=silent is passed in order to suppress errors on
         # non-target (imported) libraries.
         # 0.810 has a --exclude flag which may work better:
         # https://github.com/python/mypy/pull/9992
-        follow_imports = "--follow-imports=silent"
+        # follow_imports = "--follow-imports=silent"
 
     ctx.actions.expand_template(
         template = ctx.file._template,
