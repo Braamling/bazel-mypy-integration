@@ -135,6 +135,8 @@ def _mypy_rule_impl(ctx, is_aspect = False):
         print(base_rule)
         print(base_rule.attr)
         print(base_rule.attr.deps)
+        for dep in deps:
+            print(dep.label.workspace_root) 
         if transitive_imports:
             rel_workspace_root = ''
             # If in a package, imports need to be made relative to the
