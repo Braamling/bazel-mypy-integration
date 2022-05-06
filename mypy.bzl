@@ -127,6 +127,7 @@ def _mypy_rule_impl(ctx, is_aspect = False):
     if hasattr(base_rule.attr, "deps"):
         transitive_srcs_depsets, transitive_imports = _extract_transitive_deps(base_rule.attr.deps, include_imports)
         stub_files = _extract_stub_deps(base_rule.attr.deps)
+        print(f"THESE ARE THE TRANSITIVE IMPORTS {transitive_imports}")
         if transitive_imports:
             rel_workspace_root = ''
             # If in a package, imports need to be made relative to the
