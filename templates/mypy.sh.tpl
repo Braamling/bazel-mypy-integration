@@ -20,6 +20,7 @@ main() {
 
   export MYPYPATH="$(pwd):{MYPYPATH_PATH}"
   echo "$(pwd)"
+  echo "$(ls ../../my_python_deps_types_pyyaml)"
   # Workspace rules run in a different location from aspect rules. Here we
   # normalize if the external source isn't found.
   if [ ! -f $mypy ]; then
