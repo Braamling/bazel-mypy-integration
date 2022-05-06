@@ -91,6 +91,9 @@ def _extract_stub_deps(deps):
                 for src_f in stub_srcs_target.files.to_list():
                     if src_f.extension == "pyi":
                         stub_files.append(src_f)
+    print("STUB FILES AND DEPS")
+    print(stub_files)
+    print(deps)
     return stub_files
 
 def _extract_imports(imports, label):
@@ -129,6 +132,9 @@ def _mypy_rule_impl(ctx, is_aspect = False):
         stub_files = _extract_stub_deps(base_rule.attr.deps)
         print("THESE ARE THE TRANSITIVE IMPORTS")
         print(transitive_imports)
+        print(base_rule)
+        print(base_rule.attr)
+        print(base_rule.attr.deps)
         if transitive_imports:
             rel_workspace_root = ''
             # If in a package, imports need to be made relative to the
