@@ -145,8 +145,11 @@ def _mypy_rule_impl(ctx, is_aspect = False):
             print(ctx.label.package)
             print(transitive_imports)
             if ctx.label.package:
-                rel_workspace_root = '../' * (ctx.label.package.count('/') + 1)
+                rel_workspace_root = '../' * (ctx.label.package.count('/') + 2)
+                rel_workspace_root += "bazel-bkng-etl/"
             mypypath_parts += [rel_workspace_root + x for x in transitive_imports]
+            print("mypypath_parts")
+            print(mypypath_parts)
 
     if hasattr(base_rule.attr, "imports"):
         mypypath_parts += _extract_imports(base_rule.attr.imports, ctx.label)
