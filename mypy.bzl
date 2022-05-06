@@ -141,6 +141,9 @@ def _mypy_rule_impl(ctx, is_aspect = False):
             rel_workspace_root = ''
             # If in a package, imports need to be made relative to the
             # workspace root.
+            print("ctx.label.package")
+            print(ctx.label.package)
+            print(transitive_imports)
             if ctx.label.package:
                 rel_workspace_root = '../' * (ctx.label.package.count('/') + 1)
             mypypath_parts += [rel_workspace_root + x for x in transitive_imports]
@@ -162,6 +165,8 @@ def _mypy_rule_impl(ctx, is_aspect = False):
 
     mypypath_parts += [src_f.dirname for src_f in stub_files]
     mypypath = ":".join(mypypath_parts)
+    print("MYPYPATHS")
+    print(mypypath)
 
     # Ideally, a file should be passed into this rule. If this is an executable
     # rule, then we default to the implicit executable file, otherwise we create
