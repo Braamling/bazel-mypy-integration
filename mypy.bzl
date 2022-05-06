@@ -135,7 +135,7 @@ def _mypy_rule_impl(ctx, is_aspect = False):
         print(base_rule)
         print(base_rule.attr)
         print(base_rule.attr.deps)
-        for dep in deps:
+        for dep in base_rule.attr.deps:
             print(dep.label.workspace_root) 
         if transitive_imports:
             rel_workspace_root = ''
